@@ -56,27 +56,8 @@
 #include <string.h>
 #include "Debug.h"
 
-#ifdef RPI
-    #ifdef USE_BCM2835_LIB
-        #include <bcm2835.h>
-    #elif USE_WIRINGPI_LIB
-        #include <wiringPi.h>
-        #include <wiringPiSPI.h>
-    #elif USE_DEV_LIB
-        #include "RPI_sysfs_gpio.h"
-        #include "dev_hardware_SPI.h"
-    #endif
-#endif
-
-#ifdef JETSON
-    #ifdef USE_DEV_LIB
-        #include "sysfs_gpio.h"    
-        #include "sysfs_software_spi.h"
-    #elif USE_HARDWARE_LIB
-        
-    #endif
-
-#endif
+#include "libgpio_gpio.h"
+#include "dev_hardware_SPI.h"
 
 /**
  * data
@@ -90,8 +71,9 @@
 **/
 extern int EPD_RST_PIN;
 extern int EPD_DC_PIN;
-extern int EPD_CS_PIN;
 extern int EPD_BUSY_PIN;
+//
+extern int EPD_CS_PIN;
 extern int EPD_PWR_PIN;
 
 /*------------------------------------------------------------------------------------------------------*/
